@@ -6,7 +6,6 @@ import {
 } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 import { VscPackage } from "react-icons/vsc";
-
 import { Banner } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { MdAnnouncement } from "react-icons/md";

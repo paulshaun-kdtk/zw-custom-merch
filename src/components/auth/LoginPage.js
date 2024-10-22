@@ -3,7 +3,14 @@ import { Button, Label, TextInput, DarkThemeToggle } from "flowbite-react";
 
 export function LoginPage() {
   return (
-    <main className="min-h-screen gap-2 dark:bg-gray-800">
+    <main
+      className="min-h-screen gap-2 dark:bg-gray-800"
+      style={{
+        backgroundImage: "url('/images/zw_merch-variant.png')",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div
         style={{
           top: "0",

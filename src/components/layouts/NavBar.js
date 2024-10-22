@@ -1,5 +1,9 @@
 "use client";
 import { DarkThemeToggle, Navbar } from "flowbite-react";
+import { IoIosHome } from "react-icons/io";
+import { CgOpenCollective } from "react-icons/cg";
+import { SiCloudfoundry } from "react-icons/si";
+import { RiUserSettingsFill } from "react-icons/ri";
 
 // end imports
 
@@ -8,12 +12,12 @@ function NavBar() {
     <Navbar fluid rounded className="bg-gray-200 dark:bg-gray-900">
       <Navbar.Brand>
         <img
-          src="/images/murare-logo.png"
+          src="/logos/zw_merch_logo.png"
           className="mr-3 h-6 sm:h-9"
           alt="Murare Logo"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold text-blue-500 dark:text-white">
-          Shuttle Tracking Service
+          ZW Custom Merch
         </span>
       </Navbar.Brand>
       <div className="flex md:order-2">
@@ -21,14 +25,21 @@ function NavBar() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse className="">
-        <Navbar.Link href="/home" active>
+        <Navbar.Link href="/home" className="flex justify-evenly" active>
+          <IoIosHome className="mr-1" size={16} />
           Home
         </Navbar.Link>
-        <Navbar.Link href="/trips/dashboard">Dashboard</Navbar.Link>
-        <Navbar.Link href="/trips/list">Trips</Navbar.Link>
-        <Navbar.Link href="/trips/drivers">Drivers</Navbar.Link>
-        <Navbar.Link href="/trips/shuttles">Vehicles</Navbar.Link>
-        <Navbar.Link href="/trips/reports">Reports</Navbar.Link>
+        <Navbar.Link href="/trips/drivers" className="flex justify-evenly">
+          <SiCloudfoundry size={16} className="mr-1" />
+          Your Designs
+        </Navbar.Link>
+        <Navbar.Link href="/trips/drivers" className="flex justify-evenly">
+          <CgOpenCollective className="mr-1" size={18} />
+          Order History
+        </Navbar.Link>
+        <Navbar.Link href="/trips/dashboard" className="flex justify-evenly">
+        <RiUserSettingsFill size={16} className="mr-1" />
+        Your Profile</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );
