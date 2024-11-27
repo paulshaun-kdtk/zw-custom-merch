@@ -26,10 +26,13 @@
     ]
   },
   "dependencies": {
+    "@canvasjs/react-charts": "^1.0.2",
     "@material-tailwind/react": "^2.1.9",
     "@react-three/drei": "^9.114.6",
     "@react-three/fiber": "^8.17.10",
+    "@reduxjs/toolkit": "^2.3.0",
     "apexcharts": "^3.48.0",
+    "appwrite": "^16.0.2",
     "bingmaps": "^2.0.3",
     "bingmaps-react": "^1.2.10",
     "flowbite-react": "^0.10.2",

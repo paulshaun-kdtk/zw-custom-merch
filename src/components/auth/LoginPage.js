@@ -1,7 +1,39 @@
-"use client";
+import { useDispatch, useSelector } from "react-redux";
+import { loginThunk } from "../../redux/auth/loginThunk";
+import { useNavigate } from "react-router-dom";
 import { Button, Label, TextInput, DarkThemeToggle } from "flowbite-react";
+import { useState } from "react";
+import { MessageFailure } from "../sub_components/Messages";
+import { RiErrorWarningLine } from "react-icons/ri";
 
 export function LoginPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { error, loading } = useSelector((state) => state.auth);
+  const [alertContent, setAlertContent] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(loginThunk({ email, password }))
+      .unwrap()
+      .then(() => {
+        navigate("/home");
+      })
+      .catch((err) => {
+        setTimeout(() => {
+          setAlertContent(
+            <MessageFailure
+              message={err}
+              icon={<RiErrorWarningLine className="size-5" />}
+            />,
+          );
+        });
+      }, 5000);
+    setAlertContent(null);
+  };
+
   return (
     <main
       className="min-h-screen gap-2 dark:bg-gray-800"
@@ -22,30 +54,53 @@ export function LoginPage() {
         <DarkThemeToggle />
       </div>
 
-      <div className="my-auto p-5" style={{ width: "100%" }}>
-        <h3 className="mb-5 text-center text-lg font-bold text-gray-900 dark:text-white">
-          {" "}
+      <div className="m-auto max-w-3xl p-5">
+        <h3 className="mb-5 text-center text-lg font-bold text-white">
           Sign In To Your Account
         </h3>
 
-        <form className="mx-auto flex max-w-md flex-col gap-4 border-4 border-double border-green-200 bg-white p-5 dark:bg-gray-600">
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto flex w-full flex-col gap-4 border-4 border-double border-green-200 bg-gray-600 p-5"
+        >
           <div>
-            <div className="mb-2 block">
-              <Label htmlFor="email2" value="Your Email" />
-            </div>
-            <TextInput id="email2" type="email" required shadow />
+            <Label
+              htmlFor="email2"
+              className="text-gray-200"
+              value="Your Email"
+            />
+            <TextInput
+              id="email2"
+              type="email"
+              required
+              shadow
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           <div>
-            <div className="mb-2 block">
-              <Label htmlFor="password" value="Your Password" />
-            </div>
-            <TextInput id="password" type="password" required shadow />
+            <Label
+              htmlFor="password"
+              className="text-gray-200"
+              value="Your Password"
+            />
+            <TextInput
+              id="password"
+              type="password"
+              required
+              shadow
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
-          <Button type="submit">Submit </Button>
+          <Button type="submit" disabled={loading}>
+            Submit
+          </Button>
+          {alertContent}
         </form>
-        <Label className="mt-1 flex" style={{ paddingLeft: "42%" }}>
+        <Label className="mt-1 flex justify-end text-gray-200">
           Don't Have an active account?&nbsp;
           <a
             href="/signup"
@@ -54,11 +109,10 @@ export function LoginPage() {
             Request For One.
           </a>
         </Label>
-
-        <Label className="mt-1 flex" style={{ paddingLeft: "57%" }}>
+        <Label className="mt-1 flex justify-end text-gray-200">
           Back To&nbsp;
           <a
-            href="/landing"
+            href="/home"
             className="text-cyan-600 hover:underline dark:text-cyan-500"
           >
             Home

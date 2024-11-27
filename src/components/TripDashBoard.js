@@ -1,7 +1,7 @@
-import MapInterface from "./trip_components/MapContainer";
+import MapInterface from "./design_components/MapContainer";
 import NavBar from "./layouts/NavBar";
-import StatisticCards from "./trip_components/StatCards";
-import DashboardTables from "./trip_components/DashboardTables";
+import StatisticCards from "./design_components/StatCards";
+import DashboardTables from "./design_components/DashboardTables";
 
 function Dashboard() {
   return (

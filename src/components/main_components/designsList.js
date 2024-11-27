@@ -1,4 +1,4 @@
-"use client";
+import { useState } from "react";
 import { Card, Dropdown } from "flowbite-react";
 import { FaCartPlus } from "react-icons/fa";
 import { GiStarSattelites } from "react-icons/gi";
@@ -6,13 +6,31 @@ import { MdOutlinePlaylistRemove } from "react-icons/md";
 import { LuPhoneForwarded } from "react-icons/lu";
 import { TbStarHalf } from "react-icons/tb";
 import { RiHeartAdd2Line } from "react-icons/ri";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 export function Designs({
   item_name,
   item_price_base_currency,
   item_price_converted_currency,
+  item_images = [],
+  item_description,
+  item_average_rating,
   item_category,
 }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const showPreviousImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? item_images.length - 1 : prevIndex - 1,
+    );
+  };
+
+  const showNextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === item_images.length - 1 ? 0 : prevIndex + 1,
+    );
+  };
+
   return (
     <Card className="max-w-2xl shadow-sm shadow-blue-300 dark:shadow-emerald-300">
       <div className="flex justify-end px-2">
@@ -52,14 +70,36 @@ export function Designs({
           </Dropdown.Item>
         </Dropdown>
       </div>
+
       <div className="flex flex-col items-center pb-10">
-        <img
-          alt="Design Preview"
-          height="250"
-          src="/images/zw_merch-variant.png"
-          width="250"
-          className="mb-3 rounded-md shadow-lg"
-        />
+        <div className="group relative size-[250px]">
+          <img
+            alt="Design Preview"
+            src={
+              item_images.length > 0
+                ? item_images[currentImageIndex]
+                : "/assets/carousel-1.svg"
+            }
+            className="size-full rounded-md object-cover shadow-lg"
+          />
+          {item_images.length > 1 && (
+            <>
+              <button
+                className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-gray-700 p-2 text-white opacity-0 transition-opacity group-hover:opacity-100"
+                onClick={showPreviousImage}
+              >
+                <MdChevronLeft size={24} />
+              </button>
+              <button
+                className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-gray-700 p-2 text-white opacity-0 transition-opacity group-hover:opacity-100"
+                onClick={showNextImage}
+              >
+                <MdChevronRight size={24} />
+              </button>
+            </>
+          )}
+        </div>
+
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
           {item_name}
         </h5>

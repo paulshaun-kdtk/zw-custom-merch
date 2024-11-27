@@ -1,7 +1,7 @@
 "use client";
 import NavBar from "./layouts/NavBar";
-import { RecentTripsTable } from "./main_dashboard_components/RecentTripsTable";
-import { ClothingDesigner } from "./main_dashboard_components/designInterface";
+import { RecentTripsTable } from "./main_components/RecentTripsTable";
+import { ClothingDesigner } from "./main_components/designInterface";
 
 // end imports
 

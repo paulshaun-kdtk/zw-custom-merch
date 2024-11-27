@@ -3,7 +3,7 @@ import React from "react";
 
 export function SearchInput() {
   return (
-    <form class="mx-2 flex max-w-lg items-center">
+    <form class="mx-2 flex w-1/4 items-center">
       <label for="simple-search" class="sr-only">
         Search
       </label>
@@ -29,7 +29,7 @@ export function SearchInput() {
           type="text"
           id="simple-search"
           class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-          placeholder="Search branch name..."
+          placeholder="Search ..."
           required
         />
       </div>

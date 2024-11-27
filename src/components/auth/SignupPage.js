@@ -21,13 +21,13 @@ export function SignupPage() {
         <DarkThemeToggle />
       </div>
 
-      <div className="p-5" style={{ width: "100%" }}>
+      <div className="m-auto max-w-3xl p-5">
         <h3 className="mb-5 text-center text-lg font-bold text-gray-900 dark:text-white">
           {" "}
           Request An Account
         </h3>
 
-        <form className="mx-auto flex max-w-md flex-col gap-4 border-4 border-double border-green-200 bg-white p-5 dark:bg-gray-600">
+        <form className="flex w-full flex-col gap-4 border-4 border-double border-green-200 bg-white p-5 dark:bg-gray-600">
           <div>
             <div className="mb-2 block">
               <Label htmlFor="name" value="Your Full Name" />
@@ -110,7 +110,7 @@ export function SignupPage() {
           </div>
           <Button type="submit">Request Account Activation </Button>
         </form>
-        <Label className="mt-1 flex" style={{ paddingLeft: "52%" }}>
+        <Label className="mt-1 flex justify-end">
           Have an active account?&nbsp;
           <a
             href="/"

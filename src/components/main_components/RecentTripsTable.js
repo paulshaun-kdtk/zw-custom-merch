@@ -25,7 +25,7 @@ export function RecentTripsTable() {
             <Table.Cell>Active</Table.Cell>
             <Table.Cell>
               <a
-                href="#"
+                href="/"
                 className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
               >
                 View
@@ -41,7 +41,7 @@ export function RecentTripsTable() {
             <Table.Cell>Completed</Table.Cell>
             <Table.Cell>
               <a
-                href="#"
+                href="/"
                 className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
               >
                 View
@@ -57,7 +57,7 @@ export function RecentTripsTable() {
             <Table.Cell>In Progress</Table.Cell>
             <Table.Cell>
               <a
-                href="#"
+                href="/"
                 className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
               >
                 View
